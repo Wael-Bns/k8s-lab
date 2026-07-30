@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("K8sLabApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2531cf2d5e27768f5d089667eb4d3f71a2be999e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ff8814b3f4d8c05877f95710ad8ec0f129da1f00")]
 [assembly: System.Reflection.AssemblyProductAttribute("K8sLabApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("K8sLabApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
