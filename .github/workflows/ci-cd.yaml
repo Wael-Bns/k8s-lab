@@ -86,10 +86,16 @@ jobs:
           method: kubeconfig
           kubeconfig: ${{ secrets.KUBE_CONFIG }}
 
-      - name: Substitute image tag
+      - name: Substitute image tag and lowercase registry path
         run: |
-          sed -i "s|IMAGE_TAG_PLACEHOLDER|${{ needs.build-push-image.outputs.image_tag }}|" \
-            k8s/base/deployment.yaml
+          # 1. Get lowercased repository owner
+          OWNER_LOWER=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
+          
+          # 2. Replace 'OWNER' or GitHub variable with lowercased version
+          sed -i "s|OWNER|${OWNER_LOWER}|g" k8s/base/deployment.yaml
+          
+          # 3. Replace the tag placeholder
+          sed -i "s|IMAGE_TAG_PLACEHOLDER|${{ needs.build-push-image.outputs.image_tag }}|" k8s/base/deployment.yaml
 
       - name: Apply manifests
         run: kubectl apply -k k8s/base
