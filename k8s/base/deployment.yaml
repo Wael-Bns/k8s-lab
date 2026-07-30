@@ -28,7 +28,7 @@ spec:
       containers:
         - name: k8s-lab-api
           # IMAGE_TAG_PLACEHOLDER is substituted by CI before apply.
-          image: ghcr.io/OWNER/k8s-lab-api:IMAGE_TAG_PLACEHOLDER
+          image: ghcr.io/wael-bns/k8s-lab-api:IMAGE_TAG_PLACEHOLDER
           ports:
             - containerPort: 8080
               name: http
