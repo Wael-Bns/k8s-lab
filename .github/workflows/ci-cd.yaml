@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 env:
-  IMAGE_NAME: ghcr.io/${{ toLowerCase(github.repository_owner) }}/k8s-lab-api
+  IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/k8s-lab-api
 
 jobs:
   build-test:
@@ -53,9 +53,12 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Lowercase Repository Owner
-        run: echo "REPO_OWNER=${REPO_OWNER,,}" >> $GITHUB_ENV
-
+      - name: Set Image Name
+        run: |
+          # Bash syntax works here inside the 'run' block
+          OWNER_LOWER=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
+          echo "IMAGE_NAME=ghcr.io/${OWNER_LOWER}/k8s-lab-api" >> $GITHUB_ENV
+      
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
