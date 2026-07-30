@@ -1,0 +1,21 @@
+# Picked up automatically by kube-prometheus-stack's Prometheus Operator,
+# as long as its serviceMonitorSelector matches (default: any release label,
+# see helm/monitoring-values.yaml for the matching config).
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: k8s-lab-api
+  namespace: k8s-lab
+  labels:
+    release: kube-prometheus-stack
+spec:
+  selector:
+    matchLabels:
+      app: k8s-lab-api
+  namespaceSelector:
+    matchNames:
+      - k8s-lab
+  endpoints:
+    - port: http
+      path: /metrics
+      interval: 15s

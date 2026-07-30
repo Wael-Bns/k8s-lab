@@ -1,0 +1,10 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: k8s-lab-api
+  namespace: k8s-lab
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: k8s-lab-api

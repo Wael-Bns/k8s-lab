@@ -1,0 +1,33 @@
+# Override values for the prometheus-community/kube-prometheus-stack chart.
+# Kept lightweight for a local learning cluster (kind/k3d/minikube).
+
+grafana:
+  adminPassword: admin
+  service:
+    type: ClusterIP
+  defaultDashboardsEnabled: true
+
+prometheus:
+  prometheusSpec:
+    retention: 6h
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        memory: 512Mi
+    # Let Prometheus discover ServiceMonitors outside its own release,
+    # so it also picks up k8s/base/servicemonitor.yaml in the k8s-lab namespace.
+    serviceMonitorSelectorNilUsesHelmValues: false
+    podMonitorSelectorNilUsesHelmValues: false
+
+alertmanager:
+  enabled: true
+  alertmanagerSpec:
+    resources:
+      requests:
+        cpu: 50m
+        memory: 64Mi
+
+# Node exporter + kube-state-metrics stay on (defaults) - they're what let
+# you see node/pod resource pressure, OOMKills and restarts in Grafana.
