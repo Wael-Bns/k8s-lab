@@ -17,6 +17,7 @@ spec:
       containers:
       - name: k8s-lab-api
         image:  ghcr.io/OWNER/k8s-lab-api:IMAGE_TAG_PLACEHOLDER
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
         readinessProbe:
