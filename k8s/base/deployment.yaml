@@ -16,7 +16,7 @@ spec:
       terminationGracePeriodSeconds: 30
       containers:
       - name: k8s-lab-api
-        image: ghcr.io/wael-bns/k8s-lab-api:latest
+        image:  ghcr.io/OWNER/k8s-lab-api:IMAGE_TAG_PLACEHOLDER
         ports:
         - containerPort: 80
         readinessProbe:
