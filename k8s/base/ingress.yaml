@@ -1,4 +1,3 @@
-# ✅ CORRECT: rules is an array/slice (starts with a dash)
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
