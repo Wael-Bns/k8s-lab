@@ -13,6 +13,7 @@ spec:
       labels:
         app: k8s-lab-api
     spec:
+      terminationGracePeriodSeconds: 30
       containers:
       - name: k8s-lab-api
         image: ghcr.io/wael-bns/k8s-lab-api:latest
@@ -29,4 +30,8 @@ spec:
             cpu: 500m
           requests:
             cpu: 200m
+        lifecycle:
+            preStop:
+              exec:
+                command: ["/bin/sh", "-c", "sleep 5"]
         

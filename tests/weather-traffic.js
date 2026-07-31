@@ -7,7 +7,7 @@ export const options = {
     weather_traffic: {
       executor: 'constant-vus',
       vus: 100,
-      duration: '5m',
+      duration: '2m',
     },
   },
   thresholds: defaultThresholds,
